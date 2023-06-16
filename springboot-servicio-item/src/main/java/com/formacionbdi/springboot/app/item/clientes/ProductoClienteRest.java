@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.formacionbdi.springboot.app.item.models.Producto;
 
 //@FeignClient(name = "servicio-productos", url="localhost:8001")
-@FeignClient(name = "servicio-productos") // Se quita dominio por ribbon configuration
+//@FeignClient(name = "servicio-productos") // Se quita dominio por ribbon configuration
+@FeignClient(name = "SERVICIO-PRODUCTOS") // Se quita dominio por ribbon configuration
 public interface ProductoClienteRest {
 
 	@GetMapping("/listar")

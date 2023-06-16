@@ -21,7 +21,8 @@ public class ItemServiceImpl implements ItemService {
 	private RestTemplate clienteRest;
 	
 //	private String domain = "http://localhost:8001";
-	private String domain = "http://servicio-productos";//Para Ribbon
+//	private String domain = "http://servicio-productos";//Para Ribbon
+	private String domain = "http://SERVICIO-PRODUCTOS";//Para Ribbon
 	
 	@Override
 	public List<Item> findAll() {

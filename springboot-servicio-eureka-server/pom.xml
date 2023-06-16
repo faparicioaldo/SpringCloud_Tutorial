@@ -4,7 +4,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.12</version>
+		<version>2.1.5.RELEASE</version>
+		<!--version>2.7.12</version>-->
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.formacionbdi.springboot.app.eureka</groupId>
@@ -14,8 +15,9 @@
 	<description>Demo project for Spring Boot to update java versions</description>
 	<properties>
 		<java.version>11</java.version>
-		<spring-cloud.version>2021.0.7</spring-cloud.version>
+		<spring-cloud.version>Greenwich.SR1</spring-cloud.version>
 	</properties>
+	<!--<spring-cloud.version>2021.0.7</spring-cloud.version>-->
 	<dependencies>
 		<dependency>
 			<groupId>org.glassfish.jaxb</groupId>
