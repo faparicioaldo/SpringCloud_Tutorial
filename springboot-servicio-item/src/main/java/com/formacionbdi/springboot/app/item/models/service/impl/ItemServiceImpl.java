@@ -28,7 +28,7 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> findAll() {
 		List<Producto> productos = Arrays.asList(clienteRest.getForObject(domain + "/listar", Producto[].class));
 				
-		return productos.stream().map(p -> new Item(p, 1)).collect(Collectors.toList());
+		return productos.stream().map(p -> new Item(p, 1, p.getPrecio() * 1)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -36,7 +36,23 @@ public class ItemServiceImpl implements ItemService {
 		Map<String, String> pathVariables = new HashMap<String, String>();
 		pathVariables.put("id", id.toString());
 		Producto producto = clienteRest.getForObject(domain + "/ver/{id}", Producto.class, pathVariables);		
-		return new Item(producto, cantidad);
+		return new Item(producto, cantidad, producto.getPrecio() * cantidad);
+	}
+
+	@Override
+	public Item findByIdWithFallback(Long id, Integer cantidad) {
+		Map<String, String> pathVariables = new HashMap<String, String>();
+		pathVariables.put("id", id.toString());
+		Producto producto = clienteRest.getForObject(domain + "/ver/with/fallback/{id}", Producto.class, pathVariables);		
+		return new Item(producto, cantidad, producto.getPrecio() * cantidad);
+	}
+
+	@Override
+	public Item findByIdWithTimeout(Long id, Integer cantidad) {
+		Map<String, String> pathVariables = new HashMap<String, String>();
+		pathVariables.put("id", id.toString());
+		Producto producto = clienteRest.getForObject(domain + "/ver/with/timeout/{id}", Producto.class, pathVariables);		
+		return new Item(producto, cantidad, producto.getPrecio() * cantidad);
 	}
 
 }

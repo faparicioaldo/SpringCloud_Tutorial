@@ -39,7 +39,42 @@ public class ProductoController {
 		Producto producto = productoService.findById(id);
 //		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
 		producto.setPort(port);
+
+		boolean ok = false;
+		if(!ok) {
+//			throw new RuntimeException("No se pudo cargar el producto");
+		}
+				
 		return producto;
 	}
 
+	@GetMapping("/ver/with/fallback/{id}")
+	public Producto detalleFallback(@PathVariable Long id){
+		Producto producto = productoService.findById(id);
+//		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		producto.setPort(port);
+
+		boolean ok = false;
+		if(!ok) {
+			throw new RuntimeException("No se pudo cargar el producto");
+		}
+		
+		return producto;
+	}
+
+	@GetMapping("/ver/with/timeout/{id}")
+	public Producto detalleTimeout(@PathVariable Long id){
+		Producto producto = productoService.findById(id);
+//		producto.setPort(Integer.parseInt(env.getProperty("local.server.port")));
+		producto.setPort(port);
+		
+		try {
+			Thread.sleep(30000L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return producto;
+	}
 }

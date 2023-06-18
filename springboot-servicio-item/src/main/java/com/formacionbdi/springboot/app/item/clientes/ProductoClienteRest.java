@@ -19,4 +19,10 @@ public interface ProductoClienteRest {
 	@GetMapping("/ver/{id}")
 	public Producto detalle(@PathVariable Long id);
 
+	@GetMapping("/ver/with/fallback/{id}")
+	public Producto detalleFallback(@PathVariable Long id);
+
+	@GetMapping("/ver/with/timeout/{id}")
+	public Producto detalleTimeout(@PathVariable Long id);
+
 }
